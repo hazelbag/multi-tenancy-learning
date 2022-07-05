@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\TenantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return "This is the tenant with ID: " . tenant('id');
-});
+//Route::get('/', function () {
+//    return "This is the tenant with ID: " . tenant('id');
+//});
+
+Route::get('/', [TenantController::class, 'login']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -32,7 +32,7 @@ php artisan tenancy:install
 
 composer require laravel/jetstream
 
-php artisan jetstream:install livewire --teams
+php artisan jetstream:install livewire --teams (if teams is needed)
 ```
 
 ### Migrations
@@ -48,6 +48,22 @@ php artisan migrate
 
 php artisan tenants:migrate
 ```
+
+### Reset a Tenant Users Password
+
+Be sure to have the project running beforehand - `sail up -d`
+
+Create a custom command and name it anything you like - `php artisan tenant:reset-password {tenant} {email}`
+
+In your command add the following to ensure you switch/initialize the tenant connection
+
+```text
+$email = $this->argument('email'); - get the email from the command
+$tenant = $this->argument('tenant'); - get the tenant from the command
+tenancy()->initialize($tenant); - initialize the tenant connection
+$user = User::where('email', $email)->first(); - get the user from the email
+```
+From here you can reset the password and or email the user with the new password or a reset link
 
 ## Authors
 
