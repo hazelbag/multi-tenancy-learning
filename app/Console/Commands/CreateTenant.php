@@ -12,14 +12,14 @@ class CreateTenant extends Command
      *
      * @var string
      */
-    protected $signature = 'create:tenant';
+    protected $signature = 'tenants:create-tenant';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new Tenant';
+    protected $description = 'Create a new Tenant - the ID will be the subdomain prefix';
 
     /**
      * Execute the console command.

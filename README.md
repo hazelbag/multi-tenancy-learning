@@ -10,18 +10,12 @@ cp .env.example .env
 
 composer install
 
-touch database/database.sqlite
-
 npm install
 
 npm run dev
 
 sail up -d
 ```
-
-### env file
-
-Set the DB_CONNECTION in your env file to sqlite and remove the remainder of the DB_ fields
 
 ### Process Followed
 
@@ -47,6 +41,13 @@ sail bash
 php artisan migrate
 
 php artisan tenants:migrate
+```
+
+### When using sail
+
+```text
+Set the DB_USERNAME=sail when bringing it all up.
+Once it is up and running set the DB_USERNAME to root and run `sail artisan config:clear` and create a tenant.
 ```
 
 ### Reset a Tenant Users Password
